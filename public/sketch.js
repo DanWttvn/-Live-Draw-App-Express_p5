@@ -5,13 +5,21 @@ function setup() {
 	background(51)
 
 	socket = io.connect("http://localhost:3000")
+
+	// Receives and displays
+	socket.on("mouse", data => {
+		console.log("receiving" + data.x + "," + data.y);
+
+		noStroke()
+		fill(255, 0, 100);
+		ellipse(data.x, data.y, 36, 36)
+	})
 }
 
+// Draws and sends
 function mouseDragged() {
-
 	console.log("sending" + mouseX + "," + mouseY);
 	
-
 	let data = {
 		x: mouseX,
 		y: mouseY
@@ -23,8 +31,4 @@ function mouseDragged() {
 	noStroke()
 	fill(255);
 	ellipse(mouseX, mouseY, 36, 36)
-}
-
-function draw() {
-
 }

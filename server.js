@@ -12,16 +12,14 @@ const socket = require("socket.io")
 const io = socket(server)
 
 //When someone connects
-io.sockets.on("connection", (socket) => {
+io.sockets.on("connection", socket => {
 	console.log(`new connection ${socket.id}`);
 
 	// Server receiving the data from the client when the mouse...
-	socket.on("mouse", mouseMsg)
-	function mouseMsg(data) {
-		// emiting what the server receives to al the connections
+	socket.on("mouse", data => {
+		// emiting what the server receives to all the connections
 		socket.broadcast.emit("mouse", data);
 		// This is a way to send to everyone including sender
         // io.sockets.emit('message', "this goes to everyone");
-		console.log(data);
-	}
-}
+	})
+})
