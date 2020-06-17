@@ -1,5 +1,6 @@
 import React, { Component, Fragment } from 'react';
 import {BrowserRouter, Route, Switch } from "react-router-dom";
+//! me da errres el canvas con el css
 import './scss/main.scss';
 // import Alert from "./components/elements/Alert"
 import Canvas from './components/layout/Canvas'
